@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="create_post.css">
+</head>
+<body>
+    <div class="create-post-container">
+        <h2>Create Post</h2>
+        <form action="create_post.php" method="post" enctype="multipart/form-data">
+            <!-- Text input section -->
+            <div class="post-section">
+                <label for="post-text">Text:</label>
+                <textarea id="post-text" name="post_text" rows="4" cols="50"></textarea>
+            </div>
+
+            <!-- Image input section -->
+            <div class="post-section">
+                <label for="post-image">Image:</label>
+                <div class="custom-file-input">
+                    <input type="file" id="post-image" name="post_image" accept="image/*">
+                    <label for="post-image">Choose file</label>
+                </div>
+                <div class="image-preview">
+                    <img id="image-preview" src="#" alt="Image Preview">
+                </div>
+            </div>
+
+            <!-- Caption input section -->
+            <div class="post-section">
+                <label for="post-caption">Caption for Picture:</label>
+                <textarea id="post-caption" name="post_caption" rows="2" cols="50"></textarea>
+            </div>
+
+            <!-- Video input section -->
+            <div class="post-section">
+                <label for="post-video">Video:</label>
+                <div class="custom-file-input">
+                    <input type="file" id="post-video" name="post_video" accept="video/*">
+                    <label for="post-video">Choose file</label>
+                </div>
+            </div>
+            <div class="video-preview" style="display: none;">
+                <p>Selected video:</p>
+                <div class="video-preview-square">
+                    <video id="selected-video" controls>
+                        <source src="#" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <!-- Caption input section for Video -->
+            <div class="post-section">
+                <label for="post-video-caption">Caption for Video:</label>
+                <textarea id="post-video-caption" name="post_video_caption" rows="2" cols="50"></textarea>
+            </div>
+
+            <!-- Post button -->
+            <button type="submit" class="post-button">Post</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("post-image").addEventListener("change", function(event) {
+            var fileInput = this;
+            var imagePreview = document.getElementById("image-preview");
+
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = "block";
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+        document.getElementById("post-video").addEventListener("change", function(event) {
+    var fileInput = this;
+    var videoPreview = document.querySelector(".video-preview");
+    var selectedVideo = document.getElementById("selected-video");
+
+    if (fileInput.files && fileInput.files[0]) {
+        var videoSource = URL.createObjectURL(fileInput.files[0]);
+        selectedVideo.src = videoSource;
+        videoPreview.style.display = "block";
+    } else {
+        videoPreview.style.display = "none";
+    }
+});
+
+    </script>
+</body>
+</html>
