@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checker</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-buttons">
+            <button class="home">
+                <a href="index.html">Home</a>
+            </button>
+            <button class="about">
+                <a href="about.html">About</a>
+            </button>
+        </div>
+        <h1>Aminian Calender</h1>
+    </header>
+    <div class="current-time">
+        <p id="datetime"></p>
+    </div>
+    <div class="container">
+            <div class="date_input">
+                <label for="datePicker">Select a Date:</label>
+                <input type="date" id="datePicker">
+                <button onclick="calculateInfo()">Check</button>
+            </div>
+            <div id="result" class="rounded-rectangle">
+                <p><strong>Day of the Week:</strong> <span id="dayOfWeek"></span></p>
+                <p><strong>Start of Month:</strong> <span id="startOfMonth"></span></p>
+                <p><strong>End of Month:</strong> <span id="endOfMonth"></span></p>
+                <p><strong>Leap Year:</strong> <span id="leapYear"></span></p>
+            </div>
+    </div>
+    
+    <script>
+        function calculateInfo() {
+            const selectedDate = new Date(document.getElementById('datePicker').value);
+            const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][selectedDate.getDay()];
+            const startOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const endOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const isLeapYear = (selectedDate.getFullYear() % 4 === 0 && selectedDate.getFullYear() % 100 !== 0) || (selectedDate.getFullYear() % 400 === 0);
+
+            document.getElementById('dayOfWeek').textContent = dayOfWeek;
+            document.getElementById('startOfMonth').textContent = startOfMonth;
+            document.getElementById('endOfMonth').textContent = endOfMonth;
+            document.getElementById('leapYear').textContent = isLeapYear ? 'Yes' : 'No';
+        }
+         // update the date 
+         function updateTime() {
+            const now = new Date();
+            const datetimeElement = document.getElementById('datetime');
+            datetimeElement.textContent = now.toLocaleString();
+        }
+
+        // Update the time initially and every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

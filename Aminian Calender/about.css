@@ -1,0 +1,137 @@
+:root{
+    --primary-color-hue:252;
+    --color-primary:hsl(var(--primary-color-hue), 75%, 60%);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(225, 225, 238);
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    background-color: hsl(var(--primary-color-hue), 75%, 60%);
+    color: white;
+    padding: 10px 0;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center; 
+    margin-right: 150px; 
+}
+.home{
+    margin-top: 1rem;
+    background-color:  white;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.home:hover{
+    opacity: 0.8;
+}
+.home a{
+    text-decoration: none;
+    color: hsl(var(--primary-color-hue), 75%, 60%);
+}
+
+.navbar button{
+    margin-left: 1rem;
+}
+
+
+.about-author {
+    background-color: white;
+    padding: 20px;
+    margin-top: 60px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px hsl(var(--primary-color-hue), 75%, 60%);
+}
+.about-author p{
+    text-align: justify;
+}
+
+.author-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 0 0 5px hsl(var(--primary-color-hue), 75%, 60%);
+}
+
+.author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-text {
+    flex: 1;
+}
+
+.author-text h2 {
+    font-size: 20px;
+}
+
+.about-page {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 5px hsl(var(--primary-color-hue), 75%, 60%);
+}
+.about-page p{
+    text-align: justify;
+}
+
+.about-page h2 {
+    font-size: 20px;
+}
+
+@media (max-width: 950px) {
+    .about-author {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .author-image {
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .about-page {
+        padding: 10px; 
+    }
+    h1{text-align: right;
+    margin-right: 1rem;}
+    .author-image {
+        width: 150px; 
+        height: 150px;
+    }
+
+    .author-text h2 {
+        font-size: 18px; 
+    }
+
+    .about-page h2 {
+        font-size: 18px; 
+    }
+
+    
+}
