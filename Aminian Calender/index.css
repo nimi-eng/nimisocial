@@ -160,6 +160,27 @@ span {
     color: hsl(var(--primary-color-hue), 75%, 60%);
 }
 
+.footer {
+    background-color: hsl(var(--primary-color-hue), 75%, 60%);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Additional styling for the copyright text */
+.footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 
 @media (max-width: 950px) {
